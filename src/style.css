@@ -54,17 +54,22 @@ font-family: 'Poppins', sans-serif; */
 .Register{
 
 }
-/* .register-form{
-  width: 30vw;
-  margin: 120px  auto;
-  padding: 10px 20px;
-  
-} */
+
 .register-form{
   width: 30vw;
   margin: 20px  auto;
   padding: 10px 20px;
   
+}
+
+/* *************Styling login page ******************* */
+.Login{
+
+  width: 30vw;
+  margin: 120px  auto;
+  padding: 10px 20px;
+  
+
 }
 
 

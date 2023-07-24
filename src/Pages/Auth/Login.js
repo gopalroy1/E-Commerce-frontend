@@ -1,27 +1,77 @@
-import React from 'react'
+import React,{useState} from 'react'
+import  toast  from 'react-hot-toast';
+import BaseUrl from '../../Axios/BaseUrl';
 
 const Login = () => {
+  let url = "http://localhost:3005/api/user/login";
+
+  const [input, setInput] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  async function handleLogIn(e){
+    e.preventDefault();
+    console.log("chala log in")
+    const inputText = input;
+    if(!inputText || !password){
+      toast.error("Enter valid details");
+      return;
+
+    }
+    if(inputText.includes("@")){
+      console.log("aaya email me")
+      try {
+        let res = await BaseUrl.post(url,{
+          email:input,
+          password:password
+        });
+        // let da = await res.parse();
+        console.log(res);
+        
+      } catch (error) {
+        console.log(error)
+        
+      }
+    }
+    else{
+    
+      try {
+        let res = await BaseUrl.post(url,{
+          phone:input,
+          password:password
+        });
+        // let da = await res.parse();
+        console.log(res);
+        
+      } catch (error) {
+        console.log(error)
+        
+      }
+    }
+  }
+
+
   return (
-    <div>
+    <div className='Login'>
       <form>
   <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <label htmlFor="exampleInputEmail1" className="form-label">Email address or Phone</label>
+    <input onChange={(e)=>setInput(e.target.value)} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+    
   </div>
   <div className="mb-3">
     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1" />
+    <input onChange={(e)=>setPassword(e.target.value)} type="password" className="form-control" id="exampleInputPassword1" />
   </div>
   <div className="mb-3 form-check">
     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+    <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
   </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button onClick={handleLogIn} type="submit" className="btn btn-primary">Submit</button>
 </form>
 
     </div>
   )
 }
 
-export default Login
+export default Login;
