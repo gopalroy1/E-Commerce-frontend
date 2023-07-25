@@ -1,10 +1,14 @@
 import React,{useState} from 'react'
 import  toast  from 'react-hot-toast';
 import BaseUrl from '../../Axios/BaseUrl';
+import { useAuth } from '../../Components/context';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   let url = "http://localhost:3005/api/user/login";
 
+  const [auth,setAuth] = useAuth();
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +30,10 @@ const Login = () => {
           password:password
         });
         // let da = await res.parse();
+        setAuth({...auth,user:res.data.user,token:res.data.token})
         console.log(res);
+        localStorage.setItem('auth:',JSON.stringify(res.data));
+        navigate("/")
         
       } catch (error) {
         console.log(error)
@@ -42,6 +49,9 @@ const Login = () => {
         });
         // let da = await res.parse();
         console.log(res);
+        console.log(res);
+        setAuth({...auth,user:res.data.user,token:res.data.token})
+        navigate("/")
         
       } catch (error) {
         console.log(error)

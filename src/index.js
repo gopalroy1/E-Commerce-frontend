@@ -5,11 +5,17 @@ import "./style.css" ;
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import  { Toaster } from 'react-hot-toast';
+import { AuthProvider } from "./Components/context.js";
 
 
-ReactDOM.render(<BrowserRouter>
+ReactDOM.render(
+    
+    <AuthProvider>
+    <BrowserRouter>
+            <App></App>
+            <Toaster />
+        </BrowserRouter>
+    </AuthProvider>
+    
 
-<App></App>
-<Toaster />
-</BrowserRouter>
 ,document.getElementById("root"))
