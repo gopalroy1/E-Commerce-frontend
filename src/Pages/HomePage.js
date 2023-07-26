@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../Components/Layout/Layout'
-import { useAuth } from '../Components/context'
+import { useAuth } from '../Components/UseContext/authContext'
 
 const HomePage = () => {
   const [auth,setAuth]=useAuth();

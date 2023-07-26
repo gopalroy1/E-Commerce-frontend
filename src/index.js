@@ -5,7 +5,7 @@ import "./style.css" ;
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import  { Toaster } from 'react-hot-toast';
-import { AuthProvider } from "./Components/context.js";
+import { AuthProvider } from "./Components/UseContext/authContext";
 
 
 ReactDOM.render(
