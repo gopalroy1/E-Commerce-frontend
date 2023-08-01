@@ -107,3 +107,122 @@ font-family: 'Poppins', sans-serif; */
     margin: auto;
     margin-top: 100px;
 }
+
+/* ******************** Admin Menu ************************************** */
+#Admin-menu{
+  width: 25vw;
+
+}
+#menu-content-container{
+  display: flex ;
+  flex-flow: row wrap ;
+  gap: 40px;
+  margin: 20px 60px;
+ 
+
+}
+#right-admin-dashoard{
+  width: 55vw;
+}
+/* ******************** Create-category-container ************************************** */ 
+#enter-new-category{
+  margin: 15px 0px;
+  width: 50%;
+}
+#modal-input{
+  width: 80%;
+  margin-bottom: 10px;
+}
+/* ******************** Mangae product page ************************************** */ 
+#product-container{
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+}
+.product-item{
+  box-shadow: 0px 0px 4px 0px gray;
+  width: 20vw;
+  margin: 10px 10px;
+  padding: 10px 20px;
+}
+.product-item img{
+  width: 200px;
+  align-self: center;
+}
+.product-item p{
+  padding: 0;
+  margin: 0;
+}
+
+/* **************** Home page styling ***************** */
+.Filter{
+  width: 20vw;
+  margin: 20px 10px;
+}
+.filter-content-container{
+  display: flex;
+
+}
+.pro-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 30px auto;
+}
+.pro-item{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  width: 17vw;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  box-shadow: 0px 0px 5px 0 gray;
+}
+.pro-item img{
+  width: 95%;
+  height: 280px;
+  margin:  auto;
+}
+.pro-item-btn-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ************************ Cart page style *************************  */
+.cart-content{
+  display: flex;
+
+}
+.cart-item-container{
+  width: 60vw;
+  display: flex;
+  flex-flow: column wrap;
+  padding-left: 10vw;
+  padding-top: 50px;
+  border: 2px solid yellow;
+}
+.cart-item{
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+  margin: 15px 0px;
+}
+.cart-item img{
+  width: 100px;
+  height: 90%;
+}
+
+
+
+/* ***************** User Profile Edit **************  */
+.profile-view{
+  display: flex;
+  align-items: baseline ;
+  gap: 20px;
+}
+.profile-view p{
+  font-size: 21px;
+}
+

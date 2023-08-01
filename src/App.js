@@ -16,6 +16,8 @@ import CreateProducts from "./Pages/Admin/CreateProducts";
 import UserDashboard from "./Pages/Admin/UserDashboard";
 import Orders from "./Pages/User/Orders";
 import Profile from "./Pages/User/Profile";
+import ManageProducts from "./Pages/Admin/ManageProducts";
+import CartPage from "./Pages/User/CartPage";
 
 
 
@@ -27,12 +29,14 @@ const App = () => {
       <Route path="/dashboard" element={<PrivateRoute></PrivateRoute>}>
         <Route path="/dashboard/user" element={<Dashboard></Dashboard>}></Route>
         <Route path="/dashboard/user/orders" element={<Orders></Orders>}></Route>
+        <Route path="/dashboard/cart" element={<CartPage></CartPage>}></Route>
         <Route path="/dashboard/user/profile" element={<Profile></Profile>}></Route>
       </Route>
       <Route path="/dashboard" element={<AdminRoute></AdminRoute>}>
         <Route path="admin/" element={<AdminDashboard></AdminDashboard>}></Route>
         <Route path="admin/create-catagory" element={<CreateCatagory></CreateCatagory>}></Route>
         <Route path="admin/create-product" element={<CreateProducts></CreateProducts>}></Route>
+        <Route path="admin/manage-products" element={<ManageProducts></ManageProducts>}></Route>
         <Route path="admin/users" element={<UserDashboard></UserDashboard>}></Route>
       </Route>
       <Route path="/dashboard" element={<Dashboard></Dashboard>}> </Route>

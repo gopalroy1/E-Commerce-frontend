@@ -6,16 +6,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import  { Toaster } from 'react-hot-toast';
 import { AuthProvider } from "./Components/UseContext/authContext";
+import 'antd/dist/reset.css';
+import { CartProvider } from "./Components/UseContext/CartContext.js";
 
 
 ReactDOM.render(
-    
-    <AuthProvider>
+  <AuthProvider>
     <BrowserRouter>
-            <App></App>
-            <Toaster />
-        </BrowserRouter>
-    </AuthProvider>
-    
+      <CartProvider>
+        <App></App>
+        <Toaster />
+      </CartProvider>
+    </BrowserRouter>
+  </AuthProvider>,
 
-,document.getElementById("root"))
+  document.getElementById("root")
+);

@@ -2,10 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../UseContext/authContext";
 import toast from "react-hot-toast";
+import { useCart } from "../UseContext/CartContext.js";
+import { ClockCircleOutlined } from '@ant-design/icons';
+import { Avatar, Badge, Space } from 'antd';
+
 
 const Header = () => {
   //variable for using context api
   const [auth, setAuth] = useAuth();
+  const [cart,setCart] = useCart();
   function handleLogOut() {
     //Remove values from global context variable
     //Spreading then removing because some other details may be present there
@@ -74,7 +79,12 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to={`/dashboard/${auth?.user?.role ===1 ?'admin':'user'}`} className="nav-link">
+                    <NavLink
+                      to={`/dashboard/${
+                        auth?.user?.role === 1 ? "admin" : "user"
+                      }`}
+                      className="nav-link"
+                    >
                       Dashboard
                     </NavLink>
                   </li>
@@ -87,10 +97,15 @@ const Header = () => {
               )}
 
               <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart
-                </NavLink>
+                <Badge count={cart?.length} >
+                  <NavLink to="/dashboard/cart" className="nav-link">Cart</NavLink>
+                </Badge>
+                
               </li>
+              
+                
+                
+             
             </ul>
           </div>
         </div>
