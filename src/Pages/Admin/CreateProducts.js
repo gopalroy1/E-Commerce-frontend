@@ -20,7 +20,7 @@ const CreateProducts = () => {
   async function handleProductAdding(e) {
     e.preventDefault();
     try {
-      const urlAdd = "http://localhost:3005/api/products/add";
+      const urlAdd = `${process.env.REACT_APP_API}/products/add`;
       const productData = new FormData();
       productData.append("name", name);
       productData.append("description", description);
@@ -47,7 +47,7 @@ const CreateProducts = () => {
   useEffect(() => {
     async function callApi() {
       try {
-        const url = "http://localhost:3005/api/category/getall";
+        const url = `${process.env.REACT_APP_API}category/getall`;
         const { data } = await BaseUrl.get(url, {
           headers: {
             Authorization: auth.token,

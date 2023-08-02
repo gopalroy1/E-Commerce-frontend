@@ -33,7 +33,7 @@ const CartPage = () => {
                   <div className="cart-item">
                     <div className=''>
                       <img
-                        src={`http://localhost:3005/api/products/get/product-image/${element.slug}`}
+                        src={`${process.env.REACT_APP_API}/products/get/product-image/${element.slug}`}
                       ></img>
                     </div>
                     <div>

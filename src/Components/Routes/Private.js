@@ -9,7 +9,7 @@ export default function PrivateRoute(){
     
     useEffect(()=>{
         const authCheck = async ()=>{
-            let url = 'http://localhost:3005/api/user/auth'
+            let url = `${process.env.REACT_APP_API}/user/auth`
             const res = await BaseUrl.get(url,{
                 headers:{
                     'Authorization': auth.token

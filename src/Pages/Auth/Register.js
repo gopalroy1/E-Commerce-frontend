@@ -20,7 +20,7 @@ const Register = () => {
       return;
     }
     try {
-      let url = "http://localhost:3005/api/user/add";
+      let url = `${process.env.REACT_APP_API}/user/add`;
       // http://localhost:3005/api/user/login
       BaseUrl.post(url, {
         name,

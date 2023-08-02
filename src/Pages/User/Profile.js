@@ -24,7 +24,7 @@ const Profile = () => {
                 setError("Please provide all the details");
                 return;
             }
-            const url = `http://localhost:3005/api/user/update`;
+            const url = `${process.env.REACT_APP_API}/user/update`;
             const reqBody = {
                 name:name,
                 phone:phone,

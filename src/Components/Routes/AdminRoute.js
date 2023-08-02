@@ -10,7 +10,7 @@ export default function AdminRoute(){
     useEffect(()=>{
         const authCheck = async ()=>{
             try {
-                let url = 'http://localhost:3005/api/user/admin'
+                let url = `${process.env.REACT_APP_API}/user/admin`
             const res = await BaseUrl.get(url,{
                 headers:{
                     'Authorization': auth.token

@@ -32,14 +32,14 @@ const ManageProducts = () => {
         setQuantity(element.quantity)
         setshipping(element.shipping);
         setId(element._id);
-        let ph = await fetch(`http://localhost:3005/api/products/get/product-image/${element.slug}`);
+        let ph = await fetch(`${process.env.REACT_APP_API}/products/get/product-image/${element.slug}`);
         console.log(ph);
         setPhoto(ph);
         setVisible(true);
     }
     async function handleEdit(){
         try {
-            const url = `http://localhost:3005/api/products/update/${id}`;
+            const url = `${process.env.REACT_APP_API}/products/update/${id}`;
             const productData = new FormData();
             productData.append("name",name)
             productData.append("description",description)
@@ -77,7 +77,7 @@ const ManageProducts = () => {
     async function handleDelete(){
        
         try {
-            const url = `http://localhost:3005/api/products/delete/${id}`;
+            const url = `${process.env.REACT_APP_API}/products/delete/${id}`;
             const header = {
                 headers: {
                   Authorization: auth.token,
@@ -104,7 +104,7 @@ const ManageProducts = () => {
         async function fetchProductList(){
             try {
                 
-            const url = "http://localhost:3005/api/products/getall";
+            const url = `${process.env.REACT_APP_API}/products/getall`;
             const res = await BaseUrl.get(url);
             const list = res.data.product;
             console.log(list)
@@ -128,7 +128,7 @@ const ManageProducts = () => {
                 return (
                   <div key={i} className="product-item">
                     <img
-                      src={`http://localhost:3005/api/products/get/product-image/${element.slug}`}
+                      src={`${process.env.REACT_APP_API}/products/get/product-image/${element.slug}`}
                     ></img>
                     <div style={{ height: "350px" }}>
                       <h4>Name: {element?.name.substring(0, 55)}</h4>

@@ -9,7 +9,7 @@ const Filters = () => {
   useEffect(() => {
     async function callApi() {
       try {
-        const url = "http://localhost:3005/api/category/getall";
+        const url = `${process.env.REACT_APP_API}/category/getall`;
         const { data } = await BaseUrl.get(url, {
           headers: {
             Authorization: auth.token,

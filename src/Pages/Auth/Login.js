@@ -6,7 +6,7 @@ import Layout from '../../Components/Layout/Layout';
 import  toast  from 'react-hot-toast';
 
 const Login = () => {
-  let url = "http://localhost:3005/api/user/login";
+  let url = `${process.env.REACT_APP_API}/user/login`;
 
   const [auth,setAuth] = useAuth();
   const navigate = useNavigate();

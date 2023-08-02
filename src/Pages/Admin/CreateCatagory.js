@@ -21,7 +21,7 @@ const CreateCatagory = () => {
 
   async function addCategory() {
     try {
-      const urlAdd = "http://localhost:3005/api/category/add";
+      const urlAdd = `${process.env.REACT_APP_API}/category/add`;
       const bobyData = {
         catagoryname: newCategoryName,
       };
@@ -47,7 +47,7 @@ const CreateCatagory = () => {
   //Edit category name
   async function handleEditCategory() {
     try {
-      const urlAdd = "http://localhost:3005/api/category/update";
+      const urlAdd = `${process.env.REACT_APP_API}/category/update`;
       const bobyData = {
         id: editId,
         newname: editName,
@@ -77,7 +77,7 @@ const CreateCatagory = () => {
     console.log("ccccccc")
     console.log(editId);
     try {
-      const urlAdd = `http://localhost:3005/api/category/delete/${editId}`;
+      const urlAdd = `${process.env.REACT_APP_API}category/delete/${editId}`;
       const header = {
         headers: {
           Authorization: auth.token,
@@ -101,7 +101,7 @@ const CreateCatagory = () => {
   useEffect(() => {
     async function callApi() {
       try {
-        const url = "http://localhost:3005/api/category/getall";
+        const url = `${process.env.REACT_APP_API}/category/getall`;
         const { data } = await BaseUrl.get(url, {
           headers: {
             Authorization: auth.token,

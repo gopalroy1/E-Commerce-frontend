@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     async function fetchProductList() {
       try {
-        const url = "http://localhost:3005/api/products/getall";
+        const url = `${process.env.REACT_APP_API}/products/getall`;
         const res = await BaseUrl.get(url);
         const list = res.data.product;
         SetProduct(list);
@@ -39,7 +39,7 @@ const HomePage = () => {
               return (
                 <div className="pro-item">
                   <img 
-                    src={`http://localhost:3005/api/products/get/product-image/${element.slug}`}
+                    src={`${process.env.REACT_APP_API}/products/get/product-image/${element.slug}`}
                   ></img>
 
                   <h6>{element?.name.substring(0, 30)}</h6>
