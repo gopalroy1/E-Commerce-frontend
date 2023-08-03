@@ -8,16 +8,21 @@ import  { Toaster } from 'react-hot-toast';
 import { AuthProvider } from "./Components/UseContext/authContext";
 import 'antd/dist/reset.css';
 import { CartProvider } from "./Components/UseContext/CartContext.js";
+import { SearchProvider } from "./Components/UseContext/SearchContext";
 
 
 ReactDOM.render(
   <AuthProvider>
+    <SearchProvider>
+
+    
     <BrowserRouter>
       <CartProvider>
         <App></App>
         <Toaster />
       </CartProvider>
     </BrowserRouter>
+    </SearchProvider>
   </AuthProvider>,
 
   document.getElementById("root")

@@ -28,6 +28,17 @@ font-family: 'Poppins', sans-serif; */
   gap: 30px;
 
 }
+.search-box-2{
+  display: none;
+}
+.menu-container>img{
+  display: none;
+  width: 30px;
+}
+.menu-img-container img{
+  display: none;
+  width: 30px;
+}
 .topnavbar li{
   list-style: none;
   color: black;
@@ -83,9 +94,7 @@ font-family: 'Poppins', sans-serif; */
 /* **********Styling Pages ********************************************************* */
 
 /* *********Styling Register page ******************* */
-.Register{
 
-}
 
 .register-form{
   width: 30vw;
@@ -195,6 +204,9 @@ font-family: 'Poppins', sans-serif; */
   display: flex;
 
 }
+.filter-mob-version{
+  display: none;
+}
 .pro-container{
   display: flex;
   flex-flow: row wrap;
@@ -232,14 +244,13 @@ font-family: 'Poppins', sans-serif; */
   flex-flow: column wrap;
   padding-left: 10vw;
   padding-top: 50px;
-  border: 2px solid yellow;
 }
 .cart-item{
-  border: 2px solid red;
   display: flex;
   justify-content: space-around;
   padding: 20px 0px;
   margin: 15px 0px;
+  box-shadow: 0px 0px 3px 0.5px gray;
 }
 .cart-item img{
   width: 100px;
@@ -258,3 +269,83 @@ font-family: 'Poppins', sans-serif; */
   font-size: 21px;
 }
 
+/* Making page responsive  */
+
+/* Header  */
+
+@media  screen and (max-width:1300px) {
+  .filter-desktop{
+    display: none;
+  }
+  .filter-mob-version{
+    display: block;
+    background-color: white;
+    position: fixed;
+    width: 40vw;
+    /* transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  }
+  .search-box-1{
+    display: none;
+  }
+  .search-box-2{
+    display: block;
+  }
+  .topnavbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 12px 0px;
+   
+  }
+  .topnavbar ul{
+    flex-direction: column;
+  }
+  .menu-container{
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .menu-img-container{
+    gap: 200px;
+    align-items: center ;
+
+  }
+  .menu-img-container img{
+    display: block;
+    
+  }
+  
+  .search-container{
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin: 19px 18px 8px 50px;
+  }
+  .search-container input{
+    width: 220px;
+    
+  }
+
+  /* Product page  */
+  .pro-container{
+    flex-flow: column wrap;
+    
+  }
+  .pro-item{
+
+    width: 70vw;
+
+  }
+  /* //////// For cart ////// */
+  #product-container{
+   flex-direction: column ;
+  }
+  .product-item{
+    width: 70vw;
+  }
+ 
+  
+  
+  
+}

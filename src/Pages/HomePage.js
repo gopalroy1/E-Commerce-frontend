@@ -32,7 +32,7 @@ const HomePage = () => {
   return (
     <Layout title={"Home"}>
       <div className="filter-content-container">
-        <Filters></Filters>
+        
         <div className="pro-container">
           {product &&
             product?.map((element) => {

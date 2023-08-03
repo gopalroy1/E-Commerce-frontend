@@ -18,6 +18,7 @@ import Orders from "./Pages/User/Orders";
 import Profile from "./Pages/User/Profile";
 import ManageProducts from "./Pages/Admin/ManageProducts";
 import CartPage from "./Pages/User/CartPage";
+import Products from "./Pages/User/Products";
 
 
 
@@ -42,6 +43,7 @@ const App = () => {
       <Route path="/dashboard" element={<Dashboard></Dashboard>}> </Route>
       <Route path="/register" element={<Register></Register>}> </Route>
       <Route path="/login" element={<Login></Login>}> </Route>
+      <Route path="/products" element={<Products></Products>}> </Route>
       <Route path="/about" element={<About></About>}> </Route>
       <Route path="/contact" element={<Contact></Contact>}> </Route>
       <Route path="/policy" element={<Policy></Policy>}> </Route>

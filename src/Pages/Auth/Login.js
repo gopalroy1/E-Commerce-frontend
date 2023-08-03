@@ -17,7 +17,6 @@ const Login = () => {
 
   async function handleLogIn(e){
     e.preventDefault();
-    console.log("chala log in")
     const inputText = input;
     if(!inputText || !password){
       toast.error("Enter valid details");
@@ -27,7 +26,6 @@ const Login = () => {
     //login via email
 
     if(inputText.includes("@")){
-      console.log("aaya email me")
       try {
         let res = await BaseUrl.post(url,{
           email:input,
@@ -41,7 +39,7 @@ const Login = () => {
         navigate(location.state || "/")
         
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
         toast.error("Log in failed")
         
       }
