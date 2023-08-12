@@ -1,0 +1,125 @@
+ /* ************* Responsive for Tablets **************  */
+
+@media  screen and (max-width:1100px) {
+  /* *************** Register page **********   */
+    .register-form{
+      width: 80vw;
+    
+    }
+      /* *************** Log in page **********   */
+    .Login{
+  
+      width: 80vw;
+     
+    }
+      /* *************** Filter component **********   */
+    .filter-desktop{
+      display: none;
+    }
+    .mob-button-filter-container{
+      display: flex;
+      flex-direction: column;
+      width: 52vw;
+      margin: 4px 10px;
+    }
+    .mob-button-filter-container>button{
+      align-self: flex-end;
+
+    }
+    .pro-container{
+      width: 80vw;
+    }
+    .filter-mob-version>div{
+      display: block;
+      background-color: white;
+      position: absolute;
+      z-index: 5;
+      width: 50vw;
+      opacity: .90;
+      padding: 0px 20px 19px 20px;
+      border-radius: 11px;
+      right: -1px;
+    }
+    
+    /* *************** Header  **********   */
+    .mobile-nav{
+      display: flex;
+    }
+    .nav-bar-desktop{
+      display: none;
+    }
+    .topnavbar{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: baseline;
+      padding: 12px 0px;
+     
+    }
+    .topnavbar ul{
+      flex-direction: column;
+    }
+    
+    .menu-container{
+      display: flex;
+      flex-direction: column;
+    }
+   
+    .menu-img-container{
+      width: 100vw;
+      display: flex;
+     justify-content: space-between;
+     padding: 0px 10%;
+     align-items: center;
+  
+    }
+    .menu-img-container img{
+      display: block;
+      
+    }
+    
+    .search-container{
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin: 19px 18px 8px 50px;
+    }
+    .search-container input{
+      width: 220px;
+      
+    }
+    .search-box-2{
+      margin: auto;
+    }
+    .search-box-2 input{
+      width: 40vw;
+    }
+  
+  /* *************** Product page **********   */
+    .pro-container{
+      flex-flow: column wrap;
+      
+    }
+    .pro-item{
+  
+      width: 70vw;
+  
+    }
+/* *************** Cart page **********   */
+
+    .cart-content{
+      flex-direction: column ;
+    }
+    .cart-item{
+      flex-direction: column;
+      align-items: center;
+    }
+    .cart-text-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  @media screen and (max-width:1300px) {
+    
+  }

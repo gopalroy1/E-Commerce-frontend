@@ -1,0 +1,376 @@
+/* Font Popping url  */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
+/* Rule to add  */
+/* font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif; */
+* {
+  margin: 0;
+  padding: 0;
+  /* background-color: #F1F2F7; */
+}
+/*********************** Styling layout ******************************************************* */
+/*********************** Styling Header ******************************************************* */
+/*********************** Styling Navbar ******************************************************* */
+.topnavbar {
+  padding: 12px 50px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px gray;
+  --webkit-box-shadow: 0px 8px 6px -6px;
+  border-bottom: 0px solid gray;
+  background-color: #2974F1;
+}
+/* ******* Desktop navbar ********  */
+.nav-bar-desktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* ******** Moblie nav ********  */
+
+.mobile-nav {
+  display: none;
+  flex-flow: column wrap;
+}
+
+.topnavbar > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu-container > img {
+  display: none;
+  width: 30px;
+}
+.menu-img-container {
+  width: 100vw;
+}
+.menu-img-container img {
+  width: 30px;
+}
+.topnavbar li {
+  list-style: none;
+  color: black;
+}
+.search-container {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+}
+.search-container input {
+  width: 500px;
+  padding: 6px 11px;
+  border: 1px solid gray;
+  outline: rgb(80, 80, 232);
+}
+.search-container button {
+  border: none;
+  padding: 3px 10px;
+  background-color: white;
+    color: #2974F1;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+/* Footer styling  */
+.footer {
+  color: white;
+  padding: 25px;
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #434343, #000000);
+}
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
+}
+/* **********Layout Styling end **************** */
+
+/* **********Styling Pages ********************************************************* */
+
+/* *********Styling Register page ******************* */
+
+.register-form {
+  width: 30vw;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
+/* *************Styling login page ******************* */
+.Login {
+  width: 30vw;
+  margin: 120px auto;
+  padding: 10px 20px;
+}
+
+/* **********Contact us Page **************** */
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px;
+}
+.contact {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  border-radius: 15px;
+}
+.contact h1 {
+  background-color: #726c6c;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.contact-page img {
+  width: 400px;
+  border-radius: 15px;
+}
+
+/* ******************** Page not found style ************************************** */
+.pagenotfound {
+  width: 12vw;
+  margin: auto;
+  margin-top: 100px;
+}
+
+/* ******************** Admin Menu ************************************** */
+#Admin-menu {
+  width: 25vw;
+}
+#menu-content-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
+  margin: 20px 60px;
+}
+#right-admin-dashoard {
+  width: 55vw;
+}
+/* ******************** Create-category-container ************************************** */
+#enter-new-category {
+  margin: 15px 0px;
+  width: 50%;
+}
+#modal-input {
+  width: 80%;
+  margin-bottom: 10px;
+}
+/* ******************** Mangae product page ************************************** */
+#product-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+}
+.product-item {
+  box-shadow: 0px 0px 4px 0px gray;
+  width: 20vw;
+  margin: 10px 10px;
+  padding: 10px 20px;
+}
+.product-item img {
+  width: 200px;
+  align-self: center;
+}
+.product-item p {
+  padding: 0;
+  margin: 0;
+}
+
+/* **************** Home page styling ***************** */
+.home-category-container{
+  display: flex;
+  margin: 20px auto;
+  justify-content: space-between;
+  gap: 30px;
+  width: 80vw;
+
+}
+.home-category-container img{
+  width: 64px;
+}
+/* ///////Home page slider ///////////// */
+.slider-container{
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 30px;
+}
+#all-slides-homepage::-webkit-scrollbar{
+  display: none;
+}
+.slider-container>div{
+  height: 40vh;
+  
+}
+#all-slides-homepage{
+  display: flex;
+  width: 90vw;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  
+}
+.slider-container img{
+  height: 100%;
+  width: 100vw;
+  position: relative;
+}
+
+.slider-container button,#left-feature-btn,#right-feature-btn{
+  align-self: center;
+  border: none;
+  background-color: #e7eded;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: 41px;
+  color: white;
+  padding: 10px 2px;
+}
+/* //////Home page feature products components / */
+.feature-product-container{
+  padding: 10px 20px;
+  box-shadow: 0px 0px 6px 0px;
+  margin: 10px 0;
+}
+.feature-product-container button{
+  align-self: center;
+  display: none;
+}
+#feature-heading{
+  text-align: center;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 66px 0px;
+}
+#all-feature-products{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 80vw;
+  position: relative;
+  overflow-x: scroll;
+  padding: 10px 30px;
+}
+
+  #all-feature-products::-webkit-scrollbar{
+    display: none;
+  }
+
+
+#feature-product-container{
+  display: flex;
+  justify-content: flex-start;
+}
+#feature-product-container>div{
+
+}
+#feature-product-items{
+  display: flex;
+}
+.feature-product-items img{
+  width: 100px;
+}
+/* **************** Product page styling ***************** */
+.Filter {
+  width: 20vw;
+  margin: 20px 10px;
+}
+.filter-content-container {
+  display: flex;
+  width: 80vw;
+}
+
+.pro-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 50px auto;
+  margin-left: 40px;
+}
+.pro-item {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  width: 17vw;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  box-shadow: 0px 0px 5px 0 gray;
+}
+.pro-item img {
+  width: 95%;
+  height: 280px;
+  margin: auto;
+}
+.mob-button-filter-container{
+  display: none;
+}
+.pro-item-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ************************ Cart page style *************************  */
+.cart-content {
+  display: flex;
+}
+.cart-item-container {
+  width: 60vw;
+  display: flex;
+  flex-flow: column wrap;
+  padding-left: 10vw;
+  padding-top: 50px;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+  margin: 15px 0px;
+  box-shadow: 0px 0px 3px 0.5px gray;
+}
+.cart-item img {
+  width: 100px;
+  height: 90%;
+}
+
+/* ***************** User Profile Edit **************  */
+.profile-view {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+.profile-view p {
+  font-size: 21px;
+}
+
+/* ********* Filter layout ***************  */
+
+
+/* ********* Single product page ******  */
+.SingleProduct{
+  display: flex;
+  gap: 3vw;
+  margin: 3vw 8vw;
+}
+.img-price-container{
+  width: 30vw;
+}
+.img-price-container img{
+  width: 300px;
+}
+.single-pro-right-content{
+  width: 60vw;
+}

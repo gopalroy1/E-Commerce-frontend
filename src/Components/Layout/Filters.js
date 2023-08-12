@@ -3,12 +3,14 @@ import BaseUrl from "../../Axios/BaseUrl";
 import { useSearch } from '../../Components/UseContext/SearchContext';
 import { useAuth } from "../UseContext/authContext";
 import toast from "react-hot-toast";
+import { useList } from "../UseContext/originalSearchList";
 
 const Filters = () => {
   const [searchList,setSearchList] = useSearch();
-  const [originalList,setOriginalList] = useState([]);
+  const [originalList,setOriginalList] = useList();
   const [auth] = useAuth();
   const [category, setCategory] = useState([]);
+  
   
   const [filters,setFilters] = useState({
     filterOn:false,
@@ -24,23 +26,41 @@ const Filters = () => {
   });
 
 
-
+  // This run for the first time 
+  useEffect(() => {
+    //call api se category get kr rhe hai filter component ka 
+    async function callApi() {
+      try {
+        const url = `${process.env.REACT_APP_API}/category/getall`;
+        const { data } = await BaseUrl.get(url, {
+          headers: {
+            Authorization: auth.token,
+          },
+        });
+        if (data.status) {
+          const arr = data.categories;
+          setCategory(...category, arr);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("Something went wrong while fetching the categories eror hai",error);
+      }
+    }
+    callApi();
+  }, []);
 
   //Use effect for filtering 
-
+  // This will run whenever filter is changed 
   useEffect(()=>{
-    console.log(filters);
     if(filters.filterOn===false){
       return;
     }
-
     let min =0 ;
     let max =999999 ;
-
+    let arr = [...originalList];
     if(filters.filter500){
        min=0;
         max=500;
-        console.log("500 me aaya",filters)
     }
     if(filters.filter1000){
       if(filters.filter500){
@@ -118,57 +138,21 @@ const Filters = () => {
         max=9999999;
     }
 
-    ///
-    const arr = [...originalList];
-
     const newArr = arr.filter((element)=>{
-      console.log(element.category)
-      // if( filters.categoryFilterArray.length>0){
-        //We have to pass category id in the category array remeber ilt
-      //   if(){
-      //     console.log(element)
-      //   }
-      // }
-      
-      if(( filters.categoryFilterArray.includes(element.category) || filters.categoryFilterArray.length===0) && element.price>=min && element.price<=max){
+      if((( filters.categoryFilterArray.includes(element.category) || filters.categoryFilterArray.length===0)) && element.price>=min && element.price<=max){
           return element;
         }
       
     })
+    // if all is deselected then original list render kro 
     if(!filters.filterCategory && !filters.filter500 && !filters.filter1000 && !filters.filter1500 && !filters.filter2000 && !filters.filter2500 && !filters.filter3000 ){
-      console.log("andar sb false",originalList);
       setSearchList({...searchList,searchedList:originalList})
     }
+    //Ya phir render ko change kr do filter array se
     else{
-
       setSearchList({...searchList,searchedList:newArr});
     }
-    console.log(searchList);
   },[filters])
-
-
-  useEffect(() => {
-    async function callApi() {
-      try {
-        const url = `${process.env.REACT_APP_API}/category/getall`;
-        const { data } = await BaseUrl.get(url, {
-          headers: {
-            Authorization: auth.token,
-          },
-        });
-        if (data.status) {
-          const arr = data.categories;
-          setCategory(...category, arr);
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong while fetching the categories");
-      }
-    }
-    callApi();
-    if(searchList?.searchedList)
-    setOriginalList(searchList.searchedList);
-  }, []);
   return (
     <div className="Filter">
       <h4 class="display-6">Filter By Category</h4>
@@ -332,7 +316,6 @@ const Filters = () => {
       </div>
       <button onClick={()=>{
         setSearchList({...searchList,searchedList:originalList});
-
       }} type="btn" className="btn btn-danger">Reset</button>
     </div>
   );
