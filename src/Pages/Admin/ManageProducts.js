@@ -13,7 +13,6 @@ const ManageProducts = () => {
     const [modalvisible2,setModalVisible2] = useState(false);
     const [category,setCategory] = useState([]);
     const [categoryId,setCategoryId] = useState([]);
-    const [selectedCategory,setSelectedCategory] = useState("");
     const [name,setName] =useState("");
     const [description,setDescription] =useState("");
     const [price,setPrice] =useState("");
@@ -23,9 +22,10 @@ const ManageProducts = () => {
     const [id,setId] = useState("");
     const [index,setIndex] =useState("");
     
+    // Onclick adding values to the use state to manage the product 
     async function editForm(element){
         setName(element.name);
-        setCategory(element.category?.name);
+        setCategory(element.category.name);
         setCategoryId(element.category?._id);
         setDescription(element.description);
         setPrice(element.price);
@@ -33,7 +33,6 @@ const ManageProducts = () => {
         setshipping(element.shipping);
         setId(element._id);
         let ph = await fetch(`${process.env.REACT_APP_API}/products/get/product-image/${element.slug}`);
-        console.log(ph);
         setPhoto(ph);
         setVisible(true);
     }
@@ -106,8 +105,7 @@ const ManageProducts = () => {
                 
             const url = `${process.env.REACT_APP_API}/products/getall`;
             const res = await BaseUrl.get(url);
-            const list = res.data.product;
-            console.log(list)
+            const list = res.data.productList;
             setProductList(list);
             } catch (error) {
                 console.log("Error happend while fetching all products error is : ",error)
@@ -174,6 +172,7 @@ const ManageProducts = () => {
                 );
               })}
           </div>
+{/* Modal for updating the product  */}
           <Modal
             onCancel={() => setVisible(false)}
             visible={visible}
@@ -187,7 +186,7 @@ const ManageProducts = () => {
                 width: "90%",
               }}
             >
-              <h2 class="display-3">Create a product</h2>
+              <h2 class="display-5">Update the product</h2>
 
               <label>Category</label>
               <input
@@ -289,6 +288,7 @@ const ManageProducts = () => {
             </div>
           </Modal>
 
+{/* Modal for deleting the product  */}
           <Modal
             onCancel={() => {
               setModalVisible2(false);

@@ -4,8 +4,9 @@ import BaseUrl from "../Axios/BaseUrl";
 import FeatureProducts from "../Components/FeatureProducts";
 
 const HomePage = () => {
-  const [currIndex, setCurrIndex] = useState(0);
-  const [productList, setProductList] = useState();
+  const [productListOffers, setProductList] = useState();
+  const [productTopClothes, setProductTopClothes] = useState();
+  const [productTopBooks, setProductTopBooks] = useState();
   const categoryArr = [
     {
       link: `https://rukminim2.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100`,
@@ -73,6 +74,8 @@ const HomePage = () => {
   // }
   // fun();
 
+
+
   function slideRight(e) {
     const slider = document.getElementById("all-slides-homepage");
     slider.scrollLeft+=1536;
@@ -99,15 +102,34 @@ const HomePage = () => {
       }
     }
     fetchProductList();
+    async function fetchTopDeals() {
+      try {
+        //Search and set top deals 
+        const urlNew = `${process.env.REACT_APP_API}/products/search/women`;
+        const res = await BaseUrl.get(urlNew);
+        let arr = res.data.productList;
+        setProductTopClothes(arr);
+        //Search and set top in clothes
+        const urlNew2 = `${process.env.REACT_APP_API}/products/search/book`;
+        const res2 = await BaseUrl.get(urlNew2);
+        let arr2 = res2.data.productList;
+        setProductTopBooks(arr2);
+
+    } catch (error) {
+        console.log("Error while fetching the search data ",error.response.data)
+    }
+    }
+    fetchTopDeals();
   }, []);
   return (
     <Layout title={"Home"}>
+      {/* Creating top categories in homepage  */}
       <div className="">
         <div className="home-category-container">
           {categoryArr &&
             categoryArr.map((element, i) => {
               return (
-                <div key={i}>
+                <div key={i} >
                   <img src={element.link}></img>
                   <p>{element.name}</p>
                 </div>
@@ -136,9 +158,9 @@ const HomePage = () => {
         </div>
         {/* Making reusable components first here to test it  */}
         
-        <FeatureProducts productList={productList}></FeatureProducts>
-        <FeatureProducts productList={productList}></FeatureProducts>
-        <FeatureProducts productList={productList}></FeatureProducts>
+        <FeatureProducts  url={`${process.env.REACT_APP_API}/products/search/getall`} heading="Top offers" deals="Top Deals" productList={productListOffers}></FeatureProducts>
+        <FeatureProducts  url={`${process.env.REACT_APP_API}/products/search/clothes`} heading="Best in clothes" deals="Exclusive offer" productList={productTopClothes}></FeatureProducts>
+        <FeatureProducts  url={`${process.env.REACT_APP_API}/products/search/Books`} heading="Best in Books" deals="min 30% off!" productList={productTopBooks}></FeatureProducts>
       </div>
     </Layout>
   );

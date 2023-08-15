@@ -47,7 +47,7 @@ const CreateProducts = () => {
   useEffect(() => {
     async function callApi() {
       try {
-        const url = `${process.env.REACT_APP_API}category/getall`;
+        const url = `${process.env.REACT_APP_API}/category/getall`;
         const { data } = await BaseUrl.get(url, {
           headers: {
             Authorization: auth.token,
@@ -58,8 +58,8 @@ const CreateProducts = () => {
           setCategory(...category, arr);
         }
       } catch (error) {
-        console.log(error);
-        toast.error("Something went wrong while fetching the categories");
+        console.log("Something went wrong while fetching the categories",error);
+        toast.error();
       }
     }
     callApi();

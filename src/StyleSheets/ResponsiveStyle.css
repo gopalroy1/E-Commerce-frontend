@@ -94,6 +94,14 @@
     .search-box-2 input{
       width: 40vw;
     }
+/* *************** Home page **********   */
+
+    .home-category-container {
+      overflow-x: scroll;
+  }
+  .home-category-container::-webkit-scrollbar{
+    display: none;
+  }
   
   /* *************** Product page **********   */
     .pro-container{
@@ -120,6 +128,18 @@
       align-items: center;
     }
   }
-  @media screen and (max-width:1300px) {
-    
+
+
+/* // For mobile compatiblity  */
+  @media screen and (max-width:500px) {
+    .for-mobile{
+      display: flex;
+    }
+    .mobile-nav,.footer{
+      display: none;
+    }
+    .search-container {
+      gap: 25px;
+    }
+  
   }

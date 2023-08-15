@@ -29,6 +29,11 @@ font-family: 'Poppins', sans-serif; */
 }
 
 /* ******** Moblie nav ********  */
+.for-mobile{
+  display: none;
+}
+
+/* ******** Moblie nav ********  */
 
 .mobile-nav {
   display: none;
@@ -80,6 +85,26 @@ font-family: 'Poppins', sans-serif; */
 }
 
 /* Footer styling  */
+.footer-mobile{
+  display: none;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 15px 0px 0px 0px;
+  margin: 10px 0px;
+  margin-top: 1px solid gray;
+  position: fixed;
+  bottom: -9px;
+  background-color: white;
+}
+.footer-mob-link-container{
+  text-decoration: none;
+    color: black;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
 .footer {
   color: white;
   padding: 25px;

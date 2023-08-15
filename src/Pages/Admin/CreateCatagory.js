@@ -5,10 +5,10 @@ import AdminMenu from "../../Components/Layout/AdminMenu";
 import BaseUrl from "../../Axios/BaseUrl";
 import { useAuth } from "../../Components/UseContext/authContext";
 
-import { Button, Modal } from "antd";
+import {  Modal } from "antd";
 
 const CreateCatagory = () => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const [newCategoryName, setNewCategoryName] = useState("");
   const [editName, setEditName] = useState("");
   const [editId, setEditId] = useState("");
@@ -35,6 +35,7 @@ const CreateCatagory = () => {
         console.log(res);
         const newArr = [...categories];
         newArr.push(res.data.body);
+        console.log(newArr)
         setCategories(newArr);
         toast.success(res.data.message);
         return;
@@ -57,7 +58,6 @@ const CreateCatagory = () => {
           Authorization: auth.token,
         },
       };
-      console.log(editName, editId);
       const res = await BaseUrl.put(urlAdd, bobyData, header);
       if (res.data.status) {
         console.log(res.data.catagory);
@@ -110,6 +110,7 @@ const CreateCatagory = () => {
         if (data.status) {
           const arr = data.categories;
           setCategories(...categories, arr);
+           console.log(arr);
         }
       } catch (error) {
         console.log(error);

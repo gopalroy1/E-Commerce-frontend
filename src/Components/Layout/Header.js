@@ -28,7 +28,15 @@ const Header = () => {
   }
   return (
     <nav className="topnavbar">
-      <div className="mobile-nav" >
+      <div className="for-mobile">
+        {/* <li className="">
+          <NavLink to="/" className="link">
+            🛒 Gift shop
+          </NavLink>
+        </li> */}
+        <Search></Search>
+      </div>
+      <div className="mobile-nav">
         <div className="menu-img-container">
           <img
             src={menuIcon}
@@ -108,7 +116,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        
+
         <div className="search-box-2">
           <Search></Search>
         </div>
