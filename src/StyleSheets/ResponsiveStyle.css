@@ -132,6 +132,9 @@
 
 /* // For mobile compatiblity  */
   @media screen and (max-width:500px) {
+    .home-desktop-slider-container{
+      display: none;
+  }
     .for-mobile{
       display: flex;
     }
@@ -140,6 +143,42 @@
     }
     .search-container {
       gap: 25px;
+    }
+    /* Home page slider styling  */
+    #all-slider-homepage-mobile{
+      display: flex;
+      overflow-x: scroll;
+      margin-top: -50px;
+      margin-bottom: 10px;
+    }
+    #all-slider-homepage-mobile img{
+      max-height: 200px;
+    }
+    /* Feature products for mobile  */
+    #feature-product-container{
+      display: none;
+      
+    }
+    #feature-product-container-mobile{
+      display: flex;
+      flex-direction: column;
+     
+    }
+    #all-feature-products-mobile{
+      display: flex;
+    flex-flow: row wrap;
+    margin: 10px 10px;
+    justify-content: space-between;
+    }
+    #feature-heading-mobile{
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: lightpink;
+    }
+    #feature-heading-mobile button{
+      width: 76px;
+      font-size: 14px;
     }
   
   }

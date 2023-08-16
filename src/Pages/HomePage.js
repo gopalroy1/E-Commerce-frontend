@@ -2,11 +2,17 @@ import React, { useState, useEffect } from "react";
 import Layout from "../Components/Layout/Layout";
 import BaseUrl from "../Axios/BaseUrl";
 import FeatureProducts from "../Components/FeatureProducts";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useList } from "../Components/UseContext/originalSearchList";
+import { useSearch } from "../Components/UseContext/SearchContext";
 
 const HomePage = () => {
   const [productListOffers, setProductList] = useState();
   const [productTopClothes, setProductTopClothes] = useState();
   const [productTopBooks, setProductTopBooks] = useState();
+  const navigate = useNavigate();
+  const [originalList,setOriginalList] = useList();
+  const [searchList,setSearchList] = useSearch();
   const categoryArr = [
     {
       link: `https://rukminim2.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100`,
@@ -50,11 +56,22 @@ const HomePage = () => {
       link: `https://rukminim2.flixcart.com/fk-p-flap/844/140/image/c2d8527e77c55b8c.jpg?q=50`,
     },
     {link:`https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Shreyansh/BAU/Unrexc/D70978891_INWLD_BAU_Unrec_Uber_PC_Hero_3000x1200._CB594707876_.jpg`},
-    {link:`https://images-eu.ssl-images-amazon.com/images/G/31/img22/Toys/GW/GW-Hero-PC_BBAug23_Soft-toys_with-Apay_Lifestyle_2x._CB597740150_.jpg`},
+    {link:`https://rukminim2.flixcart.com/fk-p-flap/844/140/image/fe37d9750b067d16.jpg?q=50`},
     {
       link: `https://rukminim2.flixcart.com/fk-p-flap/844/140/image/41fac6f59554c679.jpg?q=50`,
     },
   ];
+  const sliderMobArr = [
+    {
+      link: `https://rukminim2.flixcart.com/fk-p-flap/1200/550/image/0b23d7c39b1af56a.jpg?q=20`,
+    },
+    {link:`https://rukminim2.flixcart.com/fk-p-flap/1200/550/image/f96a9c98319f4740.png?q=20`},
+    {link:`https://rukminim2.flixcart.com/fk-p-flap/1200/550/image/e5de2df8b1ae549d.jpg?q=20`},
+    {
+      link: `https://rukminim2.flixcart.com/fk-p-flap/1200/550/image/26a9d936fe448001.jpg?q=20`,
+    },
+  ];
+
 
   // function fun(){
 
@@ -84,6 +101,15 @@ const HomePage = () => {
     const slider = document.getElementById("all-slides-homepage");
     slider.scrollBehaviour="smooth";
     slider.scrollLeft-=1536;
+  }
+  function slideRightMob(e) {
+    const slider = document.getElementById("all-slider-homepage-mobile");
+    slider.scrollLeft+=500;
+  }
+  function sliderLeftMob(e) {
+    const slider = document.getElementById("all-slider-homepage-mobile");
+    slider.scrollBehaviour="smooth";
+    slider.scrollLeft-=500;
   }
 
   useEffect(() => {
@@ -129,14 +155,28 @@ const HomePage = () => {
           {categoryArr &&
             categoryArr.map((element, i) => {
               return (
-                <div key={i} >
+                <div key={i} onClick={async()=>{
+                 try {
+                  const urlNew = `${process.env.REACT_APP_API}/products/search/${element.name}`;
+                  const res = await BaseUrl.get(urlNew);
+                  let arr = res.data.productList;
+                  setSearchList({ ...searchList, searchedList: arr });
+                  setOriginalList(arr);
+                  console.log(arr);
+                  navigate("/products");
+                  
+                 } catch (error) {
+                  console.log("Error while serching based on category ", error)
+                 }
+                }} >
                   <img src={element.link}></img>
                   <p>{element.name}</p>
                 </div>
               );
             })}
         </div>
-        <div className="slider-container">
+        {/* Slider for desktop starts  */}
+        <div className="slider-container home-desktop-slider-container">
           <button onClick={sliderLeft} id="left-arrow">
             &lt;
           </button>
@@ -149,6 +189,20 @@ const HomePage = () => {
                       alt="slide-image"
                       id={`slide${i}`}
                       src={`${element.link}`}
+                      onClick={async()=>{
+                        try {
+                         const urlNew = `${process.env.REACT_APP_API}/products/search/deals}`;
+                         const res = await BaseUrl.get(urlNew);
+                         let arr = res.data.productList;
+                         setSearchList({ ...searchList, searchedList: arr });
+                         setOriginalList(arr);
+                         console.log(arr);
+                         navigate("/products");
+                         
+                        } catch (error) {
+                         console.log("Error while serching based on category ", error)
+                        }
+                       }} 
                     ></img>
                   </div>
                 );
@@ -156,11 +210,50 @@ const HomePage = () => {
           </div>
           <button onClick={(e) => { slideRight(e);}} id="right-arrow">&gt;</button>
         </div>
-        {/* Making reusable components first here to test it  */}
+        {/* slider for mobiles  */}
+
+        <div  id="mobile-home-slider-container">
+          {/* <button onClick={sliderLeftMob} id="left-arrow">
+            &lt;
+          </button> */}
+          <div id="all-slider-homepage-mobile">
+            {sliderMobArr &&
+              sliderMobArr.map((element, i) => {
+                return (
+                  <div key={i}>
+                    <img
+                      alt="slide-image"
+                      id={`slide${i}`}
+                      src={`${element.link}`}
+                      onClick={async()=>{
+                        try {
+                         const urlNew = `${process.env.REACT_APP_API}/products/search/deals}`;
+                         const res = await BaseUrl.get(urlNew);
+                         let arr = res.data.productList;
+                         setSearchList({ ...searchList, searchedList: arr });
+                         setOriginalList(arr);
+                         console.log(arr);
+                         navigate("/products");
+                         
+                        } catch (error) {
+                         console.log("Error while serching based on category ", error)
+                        }
+                       }} 
+                    ></img>
+                  </div>
+                );
+              })}
+          </div>
+          {/* <button onClick={(e) => { slideRightMob(e);}} id="right-arrow">&gt;</button> */}
+        </div>
+        {/* Product Fetch components  */}
         
+        <div style={{paddingBottom:"60px"}}>
         <FeatureProducts  url={`${process.env.REACT_APP_API}/products/search/getall`} heading="Top offers" deals="Top Deals" productList={productListOffers}></FeatureProducts>
         <FeatureProducts  url={`${process.env.REACT_APP_API}/products/search/clothes`} heading="Best in clothes" deals="Exclusive offer" productList={productTopClothes}></FeatureProducts>
         <FeatureProducts  url={`${process.env.REACT_APP_API}/products/search/Books`} heading="Best in Books" deals="min 30% off!" productList={productTopBooks}></FeatureProducts>
+        </div>
+      
       </div>
     </Layout>
   );
